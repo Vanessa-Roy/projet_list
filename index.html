@@ -11,12 +11,23 @@
 				<h1>Ma liste de course</h1>
 			</header>
 			<section>
-                <div>
-                    <!-- -->
+                <form id="formForAddArticle">
+					<!-- here the article we want to add at the list -->
+					<input type="text" name="articleToAdd" id="articleToAdd" placeholder="ajoutez un article ici" required />
+					<input id="button" type="submit" value="Ajouter à la liste" onclick="addToTheList();" />
+				</form>
+				<div>
+					<h2>Ma liste d'articles ajoutés :</h2>
+					<ul id="articleAdded">
+					<!-- here the articles added -->
+					</ul>
+                </div>
+				<div id="articleChecked">
+                    <!-- here the articles checked -->
                 </div>
 			</section>
 			<footer>
-				<p>Bonne journée</p>
+				<p>fin de page</p>
 			</footer>
 		</div>
 		<script src="projet_list.js" type="text/javascript"></script>
