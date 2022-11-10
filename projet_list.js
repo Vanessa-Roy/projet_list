@@ -23,14 +23,18 @@ function addToTheList() {
 function addToTheCheckedList(e) {
     if(e.checked === true) {
         listArticlesChecked.push(e.parentElement.textContent);
-        let li = document.createElement('li');
-        li.appendChild(e.parentElement);
-        articleChecked.appendChild(li);
         e.removeAttribute("onclick","addToTheCheckedList(this)");
         e.setAttribute("type","button");
         e.setAttribute("value","remettre dans les articles ajoutés");
-        e.setAttribute("class","backToTheList");
         e.setAttribute("onclick","removeAndAddToTheList(this)")
+        let trashButton = document.createElement('input');
+        trashButton.setAttribute("type","button");
+        trashButton.setAttribute("value","supprimer l'article sélectionné");
+        trashButton.setAttribute("onclick","removeTheArticleChecked(this)")
+        let li = document.createElement('li');
+        e.parentElement.appendChild(trashButton);
+        li.appendChild(e.parentElement);
+        articleChecked.appendChild(li);
         let indexOfArticleAdded = listArticlesAdded.indexOf(e.parentElement.textContent);
         let articleAddedRemoved = listArticlesAdded.splice(indexOfArticleAdded, 1);
         console.log("articles ajoutés : ", listArticlesAdded);
@@ -52,6 +56,15 @@ function removeAndAddToTheList(e) {
     articleAdded.appendChild(li);
     let indexOfArticleChecked = listArticlesChecked.indexOf(e.parentElement.textContent);
     let articleCheckedRemoved = listArticlesChecked.splice(indexOfArticleChecked, 1);
+    e.parentElement.innerHTML = "";
+    console.log("articles ajoutés : ", listArticlesAdded);
+    console.log("articles sélectionnés : ", listArticlesChecked);
+}
+function removeTheArticleChecked(e) {
+    //supprimer l'article du tableau article sélectionnés
+    let indexOfArticleChecked = listArticlesChecked.indexOf(e.parentElement.textContent);
+    let articleCheckedRemoved = listArticlesChecked.splice(indexOfArticleChecked, 1);
+    //supprimer l'article de la zone d'affichage
     e.parentElement.innerHTML = "";
     console.log("articles ajoutés : ", listArticlesAdded);
     console.log("articles sélectionnés : ", listArticlesChecked);
