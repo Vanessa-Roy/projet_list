@@ -40,7 +40,7 @@ function addToTheCheckedList(e) {
         li.appendChild(e.parentElement);
         articleChecked.appendChild(li);
         let indexOfArticleAdded = listArticlesAdded.indexOf(e.parentElement.textContent);
-        let articleAddedRemoved = listArticlesAdded.splice(indexOfArticleAdded, 1);
+        listArticlesAdded.splice(indexOfArticleAdded, 1);
         showTheRemoveButton();
 
         console.log("articles ajoutés : ", listArticlesAdded);
