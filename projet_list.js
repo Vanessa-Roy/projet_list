@@ -41,7 +41,7 @@ function addToTheCheckedList(e) {
         articleChecked.appendChild(li);
         let indexOfArticleAdded = listArticlesAdded.indexOf(e.parentElement.textContent);
         let articleAddedRemoved = listArticlesAdded.splice(indexOfArticleAdded, 1);
-        ShowTheRemoveButton();
+        showTheRemoveButton();
 
         console.log("articles ajoutés : ", listArticlesAdded);
         console.log("articles sélectionnés : ", listArticlesChecked);
@@ -61,17 +61,17 @@ function removeAndAddToTheList(e) {
     li.appendChild(label);
     articleAdded.appendChild(li);
     let indexOfArticleChecked = listArticlesChecked.indexOf(e.parentElement.textContent);
-    let articleCheckedRemoved = listArticlesChecked.splice(indexOfArticleChecked, 1);
+    listArticlesChecked.splice(indexOfArticleChecked, 1);
     e.parentElement.innerHTML = "";
-    ShowTheRemoveButton();
+    showTheRemoveButton();
     console.log("articles ajoutés : ", listArticlesAdded);
     console.log("articles sélectionnés : ", listArticlesChecked);
 }
 function removeTheArticleChecked(e) {
     let indexOfArticleChecked = listArticlesChecked.indexOf(e.parentElement.textContent);
-    let articleCheckedRemoved = listArticlesChecked.splice(indexOfArticleChecked, 1);
+    listArticlesChecked.splice(indexOfArticleChecked, 1);
     e.parentElement.parentElement.remove();
-    ShowTheRemoveButton();
+    showTheRemoveButton();
     console.log("articles ajoutés : ", listArticlesAdded);
     console.log("articles sélectionnés : ", listArticlesChecked);
 }
@@ -91,7 +91,7 @@ function removeAllArticlesAdded() {
     console.log("articles ajoutés : ", listArticlesAdded);
     console.log("articles sélectionnés : ", listArticlesChecked);
 }
-function ShowTheRemoveButton() {
+function showTheRemoveButton() {
     if (listArticlesAdded.length != 0 && listArticlesChecked.length != 0) {
         removeAllAddedArticlesButton.removeAttribute("hidden");
         removeAllCheckedArticlesButton.removeAttribute("hidden");
