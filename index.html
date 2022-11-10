@@ -14,19 +14,19 @@
 			<section>
                 <form id="formForAddArticle">
 					<!-- here the article we want to add at the list -->
-					<input type="text" name="articleToAdd" id="articleToAdd" placeholder="ajoutez un article ici" required />
-					<input id="button" type="submit" value="Ajouter à la liste" onclick="addToTheList();" />
+					<input type="text" name="articleToAdd" id="articleToAdd" placeholder="ajoutez un article ici" />
+					<input id="button" type="submit" value="➕ Ajouter à la liste ➕" onclick="addToTheList();"disabled/>
 				</form>
 				<div>
 					<h2>Ma liste d'articles ajoutés :</h2>
-					<input id="buttonForSupprAddedArticles" type="button" value="Supprimer tous les articles ajoutés" onclick="removeAllArticlesAdded();" hidden/>
+					<input id="buttonForSupprAddedArticles" type="button" value="🗑️ Supprimer tous les articles ajoutés 🗑️" onclick="removeAllArticlesAdded();" hidden/>
 					<ul id="articleAdded">
 						<!-- here the articles added -->
 					</ul>
                 </div>
 				<div>
                     <h2>Ma liste d'articles selectionnés :</h2>
-					<input id="buttonForSupprCheckedArticles" type="button" value="Supprimer tous les articles selectionnés" onclick="removeAllArticlesChecked();" hidden />
+					<input id="buttonForSupprCheckedArticles" type="button" value="🗑️ Supprimer tous les articles selectionnés 🗑️" onclick="removeAllArticlesChecked();" hidden />
 					<ul id="articleChecked">
 					<!-- here the articles checked -->
 					</ul>

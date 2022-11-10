@@ -4,6 +4,14 @@ const button = document.getElementById("button");
 button.addEventListener("click",function(event){
     event.preventDefault();
 });
+const articleToAdd = document.getElementById("articleToAdd");
+articleToAdd.addEventListener("input",function(event){
+    if(articleToAdd.value === ""){
+    button.setAttribute("disabled","true");
+    } else {
+    button.removeAttribute("disabled");   
+    }
+});
 const removeAllAddedArticlesButton = document.getElementById('buttonForSupprAddedArticles');
 const removeAllCheckedArticlesButton = document.getElementById('buttonForSupprCheckedArticles');
 function addToTheList() {
@@ -13,6 +21,8 @@ function addToTheList() {
     let li = document.createElement("li");
     li.innerHTML = "<label> <input type='checkbox' onclick='addToTheCheckedList(this)'/>" + article + "</label>";
     articleAdded.appendChild(li);
+    articleToAdd.value="";
+    button.setAttribute("disabled","true");
     showTheRemoveButton();
     console.log("articles ajoutés : ", listArticlesAdded);
     console.log("articles sélectionnés : ", listArticlesChecked);
@@ -23,7 +33,7 @@ function addToTheCheckedList(e) {
         
         e.removeAttribute("onclick","addToTheCheckedList(this)");
         e.setAttribute("type","button");
-        e.setAttribute("value","✅");
+        e.setAttribute("value","✅🛒");
         e.setAttribute("onclick","removeAndAddToTheList(this)")
 
         let li = e.parentElement.parentElement;
