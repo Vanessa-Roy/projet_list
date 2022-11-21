@@ -12,17 +12,21 @@ articleToAdd.addEventListener("input",function(event){
     button.removeAttribute("disabled");   
     }
 });
-const removeAllAddedArticlesButton = document.getElementById('buttonForSupprAddedArticles');
 const removeAllCheckedArticlesButton = document.getElementById('buttonForSupprCheckedArticles');
+
 function addToTheList() {
     const articleAdded = document.getElementById("articleAdded");
     const article = document.getElementById("articleToAdd").value;
+    const textExplication = document.getElementById("explicationTextAddArticle");
     listArticlesAdded.push(article);
     let li = document.createElement("li");
     li.innerHTML = "<label> <input type='checkbox' onclick='addToTheCheckedList(this)'/>" + article + "</label>";
     articleAdded.appendChild(li);
     articleToAdd.value="";
     button.setAttribute("disabled","true");
+    if (textExplication != null) {
+            textExplication.remove();
+    };
     showTheRemoveButton();
     console.log("articles ajoutés : ", listArticlesAdded);
     console.log("articles sélectionnés : ", listArticlesChecked);
@@ -30,10 +34,11 @@ function addToTheList() {
 function addToTheCheckedList(e) {
     if(e.checked === true) {
         listArticlesChecked.push(e.parentElement.textContent);
-        
+        const textExplication = document.getElementById("explicationTextCheckArticle");
         e.removeAttribute("onclick","addToTheCheckedList(this)");
-        e.setAttribute("type","button");
-        e.setAttribute("value","✅🛒");
+        e.setAttribute("type","checkbox");
+        e.setAttribute("value", "true");
+        e.setAttribute("disabled", "true");
         e.setAttribute("onclick","removeAndAddToTheList(this)")
 
         let li = e.parentElement.parentElement;
@@ -42,6 +47,9 @@ function addToTheCheckedList(e) {
 
         let indexOfArticleAdded = listArticlesAdded.indexOf(e.parentElement.textContent);
         listArticlesAdded.splice(indexOfArticleAdded, 1);
+        if (textExplication != null) {
+                textExplication.remove();
+        };
         showTheRemoveButton();
 
         console.log("articles ajoutés : ", listArticlesAdded);
@@ -50,56 +58,33 @@ function addToTheCheckedList(e) {
         console.log("not checked yet");
     }
 }
-function removeAndAddToTheList(e) {
-    listArticlesAdded.push(e.parentElement.textContent);
-    let li = e.parentElement.parentElement;
-    let label = document.createElement('label');
-    label.innerHTML = "<input type='checkbox' onclick='addToTheCheckedList(this)'></input>" + e.parentElement.textContent;
-    li.appendChild(label);
-    articleAdded.appendChild(li);
-    let indexOfArticleChecked = listArticlesChecked.indexOf(e.parentElement.textContent);
-    listArticlesChecked.splice(indexOfArticleChecked, 1);
-    e.parentElement.innerHTML = "";
-    showTheRemoveButton();
-    console.log("articles ajoutés : ", listArticlesAdded);
-    console.log("articles sélectionnés : ", listArticlesChecked);
-}
-function removeTheArticleChecked(e) {
-    let indexOfArticleChecked = listArticlesChecked.indexOf(e.parentElement.textContent);
-    listArticlesChecked.splice(indexOfArticleChecked, 1);
-    e.parentElement.parentElement.remove();
-    showTheRemoveButton();
-    console.log("articles ajoutés : ", listArticlesAdded);
-    console.log("articles sélectionnés : ", listArticlesChecked);
-}
+
 function removeAllArticlesChecked() {
     let ul = document.getElementById("articleChecked")
     ul.innerHTML = "";
     listArticlesChecked = [];
-    removeAllCheckedArticlesButton.setAttribute("hidden","true");
+    showTheRemoveButton();
     console.log("articles ajoutés : ", listArticlesAdded);
     console.log("articles sélectionnés : ", listArticlesChecked);
+
 }
-function removeAllArticlesAdded() {
-    let ul = document.getElementById("articleAdded")
-    ul.innerHTML = "";
-    listArticlesAdded = [];
-    removeAllAddedArticlesButton.setAttribute("hidden","true");
-    console.log("articles ajoutés : ", listArticlesAdded);
-    console.log("articles sélectionnés : ", listArticlesChecked);
-}
+
 function showTheRemoveButton() {
     if (listArticlesAdded.length != 0 && listArticlesChecked.length != 0) {
-        removeAllAddedArticlesButton.removeAttribute("hidden");
         removeAllCheckedArticlesButton.removeAttribute("hidden");
+        console.log(" +0 articles ajoutés : ", listArticlesAdded);
+        console.log(" +0 articles sélectionnés : ", listArticlesChecked);
     } else if (listArticlesAdded.length == 0 && listArticlesChecked.length != 0) {
-        removeAllAddedArticlesButton.setAttribute("hidden","true");
         removeAllCheckedArticlesButton.removeAttribute("hidden");
+        console.log(" 0 articles ajoutés : ", listArticlesAdded);
+        console.log(" +0 articles sélectionnés : ", listArticlesChecked);
     } else if (listArticlesAdded.length != 0 && listArticlesChecked.length == 0) {
-            removeAllAddedArticlesButton.removeAttribute("hidden");
-            removeAllCheckedArticlesButton.setAttribute("hidden","true");
+        removeAllCheckedArticlesButton.setAttribute("hidden","true");
+        console.log(" +0 articles ajoutés : ", listArticlesAdded);
+        console.log(" 0 articles sélectionnés : ", listArticlesChecked);
     } else if (listArticlesAdded.length == 0 && listArticlesChecked.length == 0) {
-            removeAllAddedArticlesButton.setAttribute("hidden","true");
-            removeAllCheckedArticlesButton.setAttribute("hidden","true");
+        removeAllCheckedArticlesButton.setAttribute("hidden","true");
+        console.log("0 articles ajoutés : ", listArticlesAdded);
+        console.log("0 articles sélectionnés : ", listArticlesChecked);
     }
 };

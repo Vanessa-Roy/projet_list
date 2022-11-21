@@ -10,30 +10,29 @@
 		<div id="page">
 			<header>
 				<h1>Ma liste de course</h1>
-			</header>
-			<section>
                 <form id="formForAddArticle">
 					<!-- here the article we want to add at the list -->
 					<input type="text" name="articleToAdd" id="articleToAdd" placeholder="ajoutez un article ici" />
-					<input id="button" type="submit" value="➕ Ajouter à la liste ➕" onclick="addToTheList();"disabled/>
+					<input id="button" type="submit" value="➕" onclick="addToTheList();"disabled/>
 				</form>
-				<div>
-					<h2>Ma liste d'articles ajoutés :</h2>
-					<input id="buttonForSupprAddedArticles" type="button" value="🗑️ Supprimer tous les articles ajoutés 🗑️" onclick="removeAllArticlesAdded();" hidden/>
+			</header>
+			<section>
+				<div id="section1">
 					<ul id="articleAdded">
+						<p id="explicationTextAddArticle"> ici s'afficheront les articles ajoutés </p>
 						<!-- here the articles added -->
 					</ul>
                 </div>
-				<div>
-                    <h2>Ma liste d'articles selectionnés :</h2>
-					<input id="buttonForSupprCheckedArticles" type="button" value="🗑️ Supprimer tous les articles selectionnés 🗑️" onclick="removeAllArticlesChecked();" hidden />
+				<div id="section2">
+					<input id="buttonForSupprCheckedArticles" type="button" value="🗑️ Nettoyer la liste" onclick="removeAllArticlesChecked();" hidden/>
 					<ul id="articleChecked">
+						<p id="explicationTextCheckArticle"> ici s'afficheront les articles achetés </p>
 					<!-- here the articles checked -->
 					</ul>
                 </div>
 			</section>
 			<footer>
-				<p>fin de page</p>
+				<p>Made with ❤️ by Vanessa Roy</p>
 			</footer>
 		</div>
 		<script src="projet_list.js" type="text/javascript"></script>

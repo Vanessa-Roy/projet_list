@@ -1,3 +1,116 @@
+@font-face {
+  font-family: 'blokletters_potloodpotlood';
+  src:  url('sources/web_fonts/blokletterspotlood_potlood_macroman/Blokletters-Potlood-webfont.ttf') format('truetype'),
+        url('sources/web_fonts/blokletterspotlood_potlood_macroman/Blokletters-Potlood-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'patrick_hand';
+  src: url('sources/web_fonts/PatrickHand-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 ul {
-    list-style-type: none;
+  list-style-type: none;
   }
+
+#page {
+font-family: 'patrick_hand','blokletters_potloodpotlood', Arial, sans-serif;
+background-color: white;
+width: 100%;
+border: 5px black ridge;
+}
+
+header {
+background-color: blue;
+text-align: center;
+width: 100%;
+}
+
+form {
+  padding-bottom: 20px;
+}
+
+input[type="text"] {
+  width: 60%;
+  height: 100%;
+}
+
+section, footer {
+  background-color: white;
+  width: 100%;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  font-family: 'patrick_hand','blokletters_potloodpotlood', Arial, Helvetica, sans-serif;
+  font-weight: 900;
+}
+
+div {
+  font-size: 1em;
+}
+
+#articleChecked li {
+  text-decoration: line-through;
+}
+
+ul {
+  text-align: left;
+  font-family: 'blokletters_potloodpotlood', Arial, Helvetica, sans-serif;
+  color: black;
+  font-weight: 900;
+  margin: 10px;
+  padding: 10px;
+  
+}
+
+#button {
+  color: orange;
+  background-color: orange;
+  width: 50px;
+  height: 50px;
+}
+
+input[type="checkbox"] {
+  margin: 10px;
+}
+
+footer {
+  text-align: center;
+}
+
+#buttonForSupprCheckedArticles {
+  color: orange;
+  border: 1px orange ridge;
+  border-radius: 5px 5px 5px;
+  font-weight: bold;
+  width: 50%;
+  align-self: center;
+  padding: 5px;
+  margin: 20px;
+}
+
+
+#section2 {
+  background-color: grey;
+  opacity: 80%;
+}
+
+#section1, #section2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+
+}
