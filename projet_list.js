@@ -1,9 +1,11 @@
+document.getElementById("articleToAdd").focus();
 let listArticlesAdded = [];
 let listArticlesChecked = [];
 const button = document.getElementById("button");
 button.addEventListener("click",function(event){
     event.preventDefault();
 });
+
 const articleToAdd = document.getElementById("articleToAdd");
 articleToAdd.addEventListener("input",function(event){
     if(articleToAdd.value === ""){
@@ -27,6 +29,7 @@ function addToTheList() {
     if (textExplication != null) {
             textExplication.remove();
     };
+    article.focus();
     showTheRemoveButton();
     console.log("articles ajoutés : ", listArticlesAdded);
     console.log("articles sélectionnés : ", listArticlesChecked);
@@ -50,6 +53,7 @@ function addToTheCheckedList(e) {
         if (textExplication != null) {
                 textExplication.remove();
         };
+        document.getElementById("articleToAdd").focus();
         showTheRemoveButton();
 
         console.log("articles ajoutés : ", listArticlesAdded);
@@ -63,6 +67,7 @@ function removeAllArticlesChecked() {
     let ul = document.getElementById("articleChecked")
     ul.innerHTML = "";
     listArticlesChecked = [];
+    document.getElementById("articleToAdd").focus();
     showTheRemoveButton();
     console.log("articles ajoutés : ", listArticlesAdded);
     console.log("articles sélectionnés : ", listArticlesChecked);
@@ -76,14 +81,18 @@ function showTheRemoveButton() {
         console.log(" +0 articles sélectionnés : ", listArticlesChecked);
     } else if (listArticlesAdded.length == 0 && listArticlesChecked.length != 0) {
         removeAllCheckedArticlesButton.removeAttribute("hidden");
+        document.getElementById("articleAdded").innerHTML = "<p id='explicationTextAddArticle'> ici s'afficheront les articles ajoutés </p>";
         console.log(" 0 articles ajoutés : ", listArticlesAdded);
         console.log(" +0 articles sélectionnés : ", listArticlesChecked);
     } else if (listArticlesAdded.length != 0 && listArticlesChecked.length == 0) {
         removeAllCheckedArticlesButton.setAttribute("hidden","true");
+        document.getElementById("articleChecked").innerHTML = "<p id='explicationTextCheckArticle'> ici s'afficheront les articles achetés </p>";
         console.log(" +0 articles ajoutés : ", listArticlesAdded);
         console.log(" 0 articles sélectionnés : ", listArticlesChecked);
     } else if (listArticlesAdded.length == 0 && listArticlesChecked.length == 0) {
         removeAllCheckedArticlesButton.setAttribute("hidden","true");
+        document.getElementById("articleAdded").innerHTML = "<p id='explicationTextAddArticle'> ici s'afficheront les articles ajoutés </p>";
+        document.getElementById("articleChecked").innerHTML = "<p id='explicationTextCheckArticle'> ici s'afficheront les articles achetés </p>";
         console.log("0 articles ajoutés : ", listArticlesAdded);
         console.log("0 articles sélectionnés : ", listArticlesChecked);
     }

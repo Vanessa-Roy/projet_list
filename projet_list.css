@@ -13,6 +13,10 @@
   font-style: normal;
 }
 
+body {
+margin: 0px;
+}
+
 ul {
   list-style-type: none;
   }
@@ -21,11 +25,10 @@ ul {
 font-family: 'patrick_hand','blokletters_potloodpotlood', Arial, sans-serif;
 background-color: white;
 width: 100%;
-border: 5px black ridge;
 }
 
 header {
-background-color: blue;
+background-color: #1d89e4;
 text-align: center;
 width: 100%;
 }
@@ -36,7 +39,7 @@ form {
 
 input[type="text"] {
   width: 60%;
-  height: 100%;
+  height: 50px;
 }
 
 section, footer {
@@ -48,7 +51,8 @@ h1 {
   color: white;
   text-align: center;
   font-family: 'patrick_hand','blokletters_potloodpotlood', Arial, Helvetica, sans-serif;
-  font-weight: 900;
+  font-size: 3em;
+  letter-spacing: 2px;
 }
 
 div {
@@ -82,6 +86,8 @@ input[type="checkbox"] {
 
 footer {
   text-align: center;
+  position: sticky;
+  bottom: 0;
 }
 
 #buttonForSupprCheckedArticles {
@@ -97,8 +103,7 @@ footer {
 
 
 #section2 {
-  background-color: grey;
-  opacity: 80%;
+  background-color:  #e2e2e2;
 }
 
 #section1, #section2 {
@@ -111,6 +116,5 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  text-align: center;
 
 }
