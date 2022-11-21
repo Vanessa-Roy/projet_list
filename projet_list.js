@@ -1,6 +1,44 @@
 document.getElementById("articleToAdd").focus();
+let jsonAdd = localStorage.getItem('listArticlesAdded');
+let jsonCheck = localStorage.getItem('listArticlesChecked');
+let jsonAddParse = JSON.parse(jsonAdd);
+let jsonCheckParse = JSON.parse(jsonCheck);
 let listArticlesAdded = [];
 let listArticlesChecked = [];
+const removeAllCheckedArticlesButton = document.getElementById('buttonForSupprCheckedArticles');
+
+
+if (jsonAdd != null) {
+    listArticlesAdded = jsonAddParse;
+    for (element of jsonAddParse) {
+        let li = document.createElement("li");
+        li.innerHTML = "<label><input type='checkbox' onclick='addToTheCheckedList(this)'/>" + element + "</label>";
+        articleAdded.appendChild(li);
+        const textExplication = document.getElementById("explicationTextAddArticle");
+        if (textExplication != null) {
+            textExplication.remove();
+        };
+    }
+} else {
+    listArticlesAdded = [];
+};
+
+if (jsonCheck != null) {
+    listArticlesChecked = jsonCheckParse;
+    for (element of jsonCheckParse) {
+        let li = document.createElement("li");
+        li.innerHTML = "<label><input type='checkbox' value='true' disabled='true' checked />" + element + "</label>";
+        articleChecked.appendChild(li);
+        const textExplication = document.getElementById("explicationTextCheckArticle");
+        if (textExplication != null) {
+            textExplication.remove();
+        };
+        removeAllCheckedArticlesButton.removeAttribute("hidden");
+    }
+} else {
+    listArticlesChecked = [];
+};
+
 const button = document.getElementById("button");
 button.addEventListener("click",function(event){
     event.preventDefault();
@@ -14,7 +52,6 @@ articleToAdd.addEventListener("input",function(event){
     button.removeAttribute("disabled");   
     }
 });
-const removeAllCheckedArticlesButton = document.getElementById('buttonForSupprCheckedArticles');
 
 function addToTheList() {
     const articleAdded = document.getElementById("articleAdded");
@@ -22,15 +59,16 @@ function addToTheList() {
     const textExplication = document.getElementById("explicationTextAddArticle");
     listArticlesAdded.push(article);
     let li = document.createElement("li");
-    li.innerHTML = "<label> <input type='checkbox' onclick='addToTheCheckedList(this)'/>" + article + "</label>";
+    li.innerHTML = "<label><input type='checkbox' onclick='addToTheCheckedList(this)'/>" + article + "</label>";
     articleAdded.appendChild(li);
     articleToAdd.value="";
     button.setAttribute("disabled","true");
     if (textExplication != null) {
             textExplication.remove();
     };
-    article.focus();
+    document.getElementById("articleToAdd").focus();
     showTheRemoveButton();
+    localStorage.setItem('listArticlesAdded', JSON.stringify(listArticlesAdded));
 }
 function addToTheCheckedList(e) {
     if(e.checked === true) {
@@ -40,7 +78,6 @@ function addToTheCheckedList(e) {
         e.setAttribute("type","checkbox");
         e.setAttribute("value", "true");
         e.setAttribute("disabled", "true");
-        e.setAttribute("onclick","removeAndAddToTheList(this)")
 
         let li = e.parentElement.parentElement;
         li.appendChild(e.parentElement);
@@ -52,6 +89,8 @@ function addToTheCheckedList(e) {
                 textExplication.remove();
         };
         showTheRemoveButton();
+        localStorage.setItem('listArticlesAdded', JSON.stringify(listArticlesAdded));
+        localStorage.setItem('listArticlesChecked', JSON.stringify(listArticlesChecked));
     } else {
         console.log("not checked yet");
     }
@@ -63,7 +102,8 @@ function removeAllArticlesChecked() {
     listArticlesChecked = [];
     document.getElementById("articleToAdd").focus();
     showTheRemoveButton();
-
+    localStorage.setItem('listArticlesAdded', JSON.stringify(listArticlesAdded));
+    localStorage.setItem('listArticlesChecked', JSON.stringify(listArticlesChecked));
 }
 
 function showTheRemoveButton() {
