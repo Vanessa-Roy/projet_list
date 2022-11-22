@@ -1,3 +1,5 @@
+/* ~~~~~~~~ general part ~~~~~~~~ */
+
 @font-face {
   font-family: 'blokletters_potloodpotlood';
   src:  url('sources/web_fonts/blokletterspotlood_potlood_macroman/Blokletters-Potlood-webfont.ttf') format('truetype'),
@@ -14,44 +16,26 @@
 }
 
 body {
-margin: 0px;
+  margin: 0px;
 }
-
-ul {
-  list-style-type: none;
-  }
 
 #page {
-font-family: 'patrick_hand','blokletters_potloodpotlood', Arial, sans-serif;
-background-color: white;
-width: 100%;
-}
-
-header {
-background-color: #1d89e4;
-text-align: center;
-width: 100%;
-}
-
-form {
-  padding-bottom: 20px;
-  padding-top: 0px;
-}
-
-input[type="text"] {
-  width: 60%;
-  height: 50px;
-  margin-right: 5px;
-}
-
-section, footer {
+  font-family: 'patrick_hand','blokletters_potloodpotlood', Arial, sans-serif;
   background-color: white;
   width: 100%;
-}
+  }
 
-#articleAdded li:nth-child(even) {
-  background: #f4f4f4
-}
+
+/* ~~~~~~~~ header part ~~~~~~~~ */
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #1d89e4;
+  text-align: center;
+  width: 100%;
+  }
 
 h1 {
   color: white;
@@ -62,27 +46,15 @@ h1 {
   margin: 3px;
 }
 
-div {
-  font-size: 1em;
+form {
+  padding-bottom: 20px;
+  padding-top: 0px;
 }
-
-#articleChecked li {
-  text-decoration: line-through;
-}
-
-ul {
-  text-align: left;
-  font-family: 'blokletters_potloodpotlood', Arial, Helvetica, sans-serif;
-  color: black;
-  font-weight: 900;
-  margin: 10px;
-  padding: 10px;
   
-}
-
-li {
-  padding-bottom: 10px;
-  padding-top: 10px;
+input[type="text"] {
+  width: 60%;
+  height: 50px;
+  margin-right: 5px;
 }
 
 #button {
@@ -92,15 +64,47 @@ li {
   height: 50px;
   font-size: 100%;
 }
+/* ~~~~~~~~ section general part ~~~~~~~~ */
+
+#section1, #section2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+ul {
+  list-style-type: none;
+  text-align: left;
+  font-family: 'blokletters_potloodpotlood', Arial, Helvetica, sans-serif;
+  color: black;
+  font-weight: 900;
+  margin: 10px;
+  padding: 10px;
+}
+
+li {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
 
 input[type="checkbox"] {
   margin: 10px;
 }
 
-footer {
-  text-align: center;
-  position: sticky;
-  bottom: 0;
+/* ~~ section part 1 (Article added) ~~ */
+
+#articleAdded li:nth-child(even) {
+  background: #f4f4f4
+}
+
+/* ~~ section part 2 (Article checked) ~~ */
+
+#section2 {
+  background-color:  #e2e2e2;
+}
+
+#articleChecked li {
+  text-decoration: line-through;
 }
 
 #buttonForSupprCheckedArticles {
@@ -116,20 +120,10 @@ footer {
   font-size: 100%;
 }
 
+/* ~~~~~~~~ footer part ~~~~~~~~ */
 
-#section2 {
-  background-color:  #e2e2e2;
-}
-
-#section1, #section2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-
+footer {
+  text-align: center;
+  position: sticky;
+  bottom: 0;
 }
