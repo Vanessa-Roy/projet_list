@@ -94,7 +94,6 @@ function addToTheList() {
     // initialise the variables needed
     const articleAdded = document.getElementById("articleAdded");
     const article = document.getElementById("articleToAdd").value;
-    const textExplication = document.getElementById("explicationTextAddArticle");
     // add the new article into the right object
     listArticlesAdded.push(article);
     // create a new line for the article
@@ -106,6 +105,7 @@ function addToTheList() {
     articleToAdd.value="";
     button.setAttribute("disabled","true");
     // check if there is the explanation text and in that case remove it
+    const textExplication = document.getElementById("explicationTextAddArticle");
     if (textExplication != null) {
             textExplication.remove();
     };
