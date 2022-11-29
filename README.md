@@ -7,7 +7,7 @@ You can add articles and then check them.
 
 ## Demo
 
-![App video](/sources/video_projet_list.mov)
+![App video](/sources/video_projet_list.gif)
 
 
 ## Screenshots
