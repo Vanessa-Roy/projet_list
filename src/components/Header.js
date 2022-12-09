@@ -15,6 +15,7 @@ function Header({ articleAdded, updateArticleAdded }) {
       <form onSubmit={submitArticle}>
         <input
           type="text"
+          autoFocus
           placeholder="ajoutez un article ici"
           value={articleInput}
           onChange={(e) => updateArticleInput(e.target.value)}

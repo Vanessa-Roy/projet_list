@@ -1,0 +1,65 @@
+div {
+    font-family: PatrickHand-Regular, Blokletters-Potlood-webfont, Arial, sans-serif;
+}
+
+section div {
+    font-family: Blokletters-Potlood-webfont, Arial, Helvetica, sans-serif;
+}
+
+.section1, .section2 {
+display: flex;
+  flex-direction: column;
+  min-height: 15em;
+}
+
+section h4  {
+    text-align: center;
+    margin: auto;
+}
+
+.section1 li:nth-child(even) {
+    background: #f4f4f4
+}
+
+.section2 {
+    background-color:  #e2e2e2;
+}
+
+.section2 li {
+    text-decoration: line-through;
+}
+
+ul {
+    list-style-type: none;
+    text-align: left;
+    font-weight: 900;
+    margin: 10px;
+    padding: 10px;
+}
+
+li {
+padding-bottom: 10px;
+padding-top: 10px;
+}
+
+input[type="checkbox"] {
+    margin: 10px;
+}
+
+.resetButton {
+    border: 3px orange ridge;
+    border-radius: 10px 10px 10px;
+    font-weight: bold;
+    width: 80%;
+    align-self: center;
+    padding: 5px;
+    margin: 20px;
+    box-shadow: 5px 5px 2px 1px rgba(0, 0, 255, .2);
+    font-size: 100%;
+}
+
+footer {
+    text-align: center;
+    position: sticky;
+    bottom: 0;
+}

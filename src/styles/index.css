@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Blokletters-Potlood-webfont';
+    src:  local('Blokletters-Potlood-webfont'), url(../fonts/Blokletters-Potlood-webfont.ttf) format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'PatrickHand-Regular';
+    src: local('PatrickHand-Regular'), url(../fonts/PatrickHand-Regular.ttf) format('truetype');
+  }
+
+div {
+  font-family: Blokletters_potloodpotlood;
+}
+
+body {
+  margin: 0px;
+}
