@@ -5,9 +5,13 @@ function Header({ articleAdded, updateArticleAdded }) {
   const [articleInput, updateArticleInput] = useState("");
 
   function submitArticle(e) {
-    updateArticleAdded([...articleAdded, articleInput]);
-    updateArticleInput("");
-    e.preventDefault();
+    if (articleAdded.includes(articleInput)) {
+      alert("Vous avez déjà entré cet article");
+    } else {
+      updateArticleAdded([...articleAdded, articleInput]);
+      updateArticleInput("");
+      e.preventDefault();
+    }
   }
   return (
     <header>
