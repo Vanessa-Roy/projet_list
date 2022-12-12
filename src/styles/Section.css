@@ -11,11 +11,11 @@
     }
     
     .section1 li:nth-child(even) {
-        background: #f4f4f4
+        background: #d3e5f2
     }
 
     .section1 li:nth-child(odd) {
-        background: #ebf3fb9f
+        background: #ebf3fb
     }
     
     .section2 {
@@ -36,18 +36,31 @@
     }
     
     li {
-    padding-bottom: 10px;
-    padding-top: 10px;
+        padding-bottom: 10px;
+        padding-top: 10px;
     }
     
     input[type="checkbox"] {
         margin: 10px;
     }
 
-    input[type="text"] {
+    .inputText {
         margin: 10px;
         height: 20px;
-        width: 220px;
+        min-width: 20%;
+        max-width: 80%;
+        color: #1d89e4;
+        font-size:15px;
+        border-radius: 20px 20px 20px;
+        border: 1.5px #72b2e7 dashed;
+        padding: 10px;
+        overflow: scroll;
+    }
+
+    .section2 input[type="text"] {
+        color: #908d8d;
+        border: 1.5px #c6c4c4 dashed;
+        box-shadow: 4px 5px 10px 1px #c6c4c4;
     }
     
     .resetButton {

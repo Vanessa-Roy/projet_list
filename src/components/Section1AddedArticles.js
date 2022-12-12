@@ -1,60 +1,49 @@
 import "../styles/Section.css";
 
 function Section1AddedArticles({
-  articleAdded,
-  updateArticleAdded,
   articleChecked,
   updateArticleChecked,
   listArticlesAdded,
   updateListArticlesAdded,
 }) {
-  function checkArticle(article) {
-    let articlePresent = listArticlesAdded.map((el) => el.article);
-    let indexOfArticle = articlePresent.indexOf(article);
-    updateArticleAdded(articleAdded.filter((articles) => articles !== article));
-    let newListArticlesAdded = listArticlesAdded.filter(function (el) {
-      return el.article !== article;
-    });
-    updateListArticlesAdded(newListArticlesAdded);
+  function checkArticle(index) {
     updateArticleChecked([
       ...articleChecked,
       {
-        article: article,
-        quantité: listArticlesAdded[indexOfArticle]["quantité"],
+        article: listArticlesAdded[index].article,
+        quantité: listArticlesAdded[index]["quantité"],
       },
     ]);
-    console.log(articleChecked);
+    updateListArticlesAdded(listArticlesAdded.filter((el, i) => i !== index));
   }
-  function changeQuantity(e, article) {
-    console.log("articles ajoutés avec quantité: ", listArticlesAdded);
-    let articlePresent = listArticlesAdded.map((el) => el.article);
-    let indexOfArticle = articlePresent.indexOf(article);
-    if (indexOfArticle !== -1) {
-      listArticlesAdded[indexOfArticle]["quantité"] = e.target.value;
-      updateListArticlesAdded(listArticlesAdded);
-    } else {
-      updateListArticlesAdded([
-        ...listArticlesAdded,
-        { article: article, quantité: e.target.value },
-      ]);
-    }
+  function changeQuantity(e, index) {
+    const temp = [...listArticlesAdded];
+    temp[index]["quantité"] = e.target.value;
+    updateListArticlesAdded(temp);
   }
 
   return (
     <div className="section1">
-      {articleAdded.length === 0 ? (
+      {listArticlesAdded.length === 0 ? (
         <h4>Ici s'afficheront les articles ajoutés</h4>
       ) : (
         <ul>
-          {articleAdded.map((article, index) => (
+          {listArticlesAdded.map((article, index) => (
             <li key={`${article}-${index}`}>
               <label>
-                <input type="checkbox" onChange={() => checkArticle(article)} />
-                {article}
                 <input
+                  type="checkbox"
+                  checked={false}
+                  onChange={() => checkArticle(index)}
+                />
+                {article.article}
+                <input
+                  className="inputText"
                   type="text"
                   placeholder="détail(quantité, poids, marque, etc)"
-                  onChange={(e) => changeQuantity(e, article)}
+                  maxLength={25}
+                  value={article["quantité"]}
+                  onChange={(e) => changeQuantity(e, index)}
                 />
               </label>
             </li>

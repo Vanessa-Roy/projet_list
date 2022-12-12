@@ -1,17 +1,14 @@
 import "../styles/Section.css";
 
 function Section2CheckedArticle({
-  articleAdded,
-  updateArticleAdded,
   articleChecked,
   updateArticleChecked,
   listArticlesAdded,
   updateListArticlesAdded,
 }) {
-  function uncheckArticle(el) {
-    updateArticleChecked(articleChecked.filter((els) => els !== el));
-    updateListArticlesAdded([...listArticlesAdded, el]);
-    updateArticleAdded([...articleAdded, el.article]);
+  function uncheckArticle(index) {
+    updateListArticlesAdded([...listArticlesAdded, articleChecked[index]]);
+    updateArticleChecked(articleChecked.filter((el, i) => i !== index));
   }
 
   return (
@@ -33,11 +30,12 @@ function Section2CheckedArticle({
               <label>
                 <input
                   type="checkbox"
-                  checked
-                  onChange={(e) => uncheckArticle(el)}
+                  checked={true}
+                  onChange={(e) => uncheckArticle(index)}
                 />
                 {el.article}
                 <input
+                  className="inputText"
                   type="text"
                   placeholder="détail(quantité, poids, marque, etc)"
                   value={el.quantité}

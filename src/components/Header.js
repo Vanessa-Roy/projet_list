@@ -1,19 +1,13 @@
 import "../styles/Header.css";
 import { useState } from "react";
 
-function Header({
-  articleAdded,
-  updateArticleAdded,
-  listArticlesAdded,
-  updateListArticlesAdded,
-}) {
+function Header({ listArticlesAdded, updateListArticlesAdded }) {
   const [articleInput, updateArticleInput] = useState("");
 
   function submitArticle(e) {
-    if (articleAdded.includes(articleInput)) {
+    if (listArticlesAdded.map((el) => el.article).includes(articleInput)) {
       alert("Vous avez déjà entré cet article");
     } else {
-      updateArticleAdded([...articleAdded, articleInput]);
       updateListArticlesAdded([
         ...listArticlesAdded,
         { article: articleInput, quantité: "" },
@@ -27,6 +21,7 @@ function Header({
       <h1>Ma liste de course</h1>
       <form onSubmit={submitArticle}>
         <input
+          className="inputArticle"
           type="text"
           autoFocus
           placeholder="ajoutez un article ici"
