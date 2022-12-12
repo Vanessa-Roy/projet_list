@@ -5,12 +5,13 @@ function Section2CheckedArticle({
   updateArticleAdded,
   articleChecked,
   updateArticleChecked,
+  listArticlesAdded,
+  updateListArticlesAdded,
 }) {
-  function uncheckArticle(article) {
-    updateArticleChecked(
-      articleChecked.filter((articles) => articles !== article)
-    );
-    updateArticleAdded([...articleAdded, article]);
+  function uncheckArticle(el) {
+    updateArticleChecked(articleChecked.filter((els) => els !== el));
+    updateListArticlesAdded([...listArticlesAdded, el]);
+    updateArticleAdded([...articleAdded, el.article]);
   }
 
   return (
@@ -27,15 +28,21 @@ function Section2CheckedArticle({
         <h4>Ici s'afficheront les articles cochés</h4>
       ) : (
         <ul>
-          {articleChecked.map((article, index) => (
-            <li key={`${article}-${index}`}>
+          {articleChecked.map((el, index) => (
+            <li key={`${el.article}-${index}`}>
               <label>
                 <input
                   type="checkbox"
                   checked
-                  onChange={() => uncheckArticle(article)}
+                  onChange={(e) => uncheckArticle(el)}
                 />
-                {article}
+                {el.article}
+                <input
+                  type="text"
+                  placeholder="détail(quantité, poids, marque, etc)"
+                  value={el.quantité}
+                  disabled
+                />
               </label>
             </li>
           ))}

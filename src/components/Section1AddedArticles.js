@@ -5,10 +5,39 @@ function Section1AddedArticles({
   updateArticleAdded,
   articleChecked,
   updateArticleChecked,
+  listArticlesAdded,
+  updateListArticlesAdded,
 }) {
   function checkArticle(article) {
+    let articlePresent = listArticlesAdded.map((el) => el.article);
+    let indexOfArticle = articlePresent.indexOf(article);
     updateArticleAdded(articleAdded.filter((articles) => articles !== article));
-    updateArticleChecked([...articleChecked, article]);
+    let newListArticlesAdded = listArticlesAdded.filter(function (el) {
+      return el.article !== article;
+    });
+    updateListArticlesAdded(newListArticlesAdded);
+    updateArticleChecked([
+      ...articleChecked,
+      {
+        article: article,
+        quantité: listArticlesAdded[indexOfArticle]["quantité"],
+      },
+    ]);
+    console.log(articleChecked);
+  }
+  function changeQuantity(e, article) {
+    console.log("articles ajoutés avec quantité: ", listArticlesAdded);
+    let articlePresent = listArticlesAdded.map((el) => el.article);
+    let indexOfArticle = articlePresent.indexOf(article);
+    if (indexOfArticle !== -1) {
+      listArticlesAdded[indexOfArticle]["quantité"] = e.target.value;
+      updateListArticlesAdded(listArticlesAdded);
+    } else {
+      updateListArticlesAdded([
+        ...listArticlesAdded,
+        { article: article, quantité: e.target.value },
+      ]);
+    }
   }
 
   return (
@@ -22,6 +51,11 @@ function Section1AddedArticles({
               <label>
                 <input type="checkbox" onChange={() => checkArticle(article)} />
                 {article}
+                <input
+                  type="text"
+                  placeholder="détail(quantité, poids, marque, etc)"
+                  onChange={(e) => changeQuantity(e, article)}
+                />
               </label>
             </li>
           ))}

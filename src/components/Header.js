@@ -1,7 +1,12 @@
 import "../styles/Header.css";
 import { useState } from "react";
 
-function Header({ articleAdded, updateArticleAdded }) {
+function Header({
+  articleAdded,
+  updateArticleAdded,
+  listArticlesAdded,
+  updateListArticlesAdded,
+}) {
   const [articleInput, updateArticleInput] = useState("");
 
   function submitArticle(e) {
@@ -9,6 +14,10 @@ function Header({ articleAdded, updateArticleAdded }) {
       alert("Vous avez déjà entré cet article");
     } else {
       updateArticleAdded([...articleAdded, articleInput]);
+      updateListArticlesAdded([
+        ...listArticlesAdded,
+        { article: articleInput, quantité: "" },
+      ]);
       updateArticleInput("");
       e.preventDefault();
     }
