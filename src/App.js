@@ -7,9 +7,7 @@ import Section2CheckedArticles from "./components/Section2CheckedArticles";
 function App() {
   const [listArticlesAdded, updateListArticlesAdded] = useState([]);
   const [articleChecked, updateArticleChecked] = useState([]);
-
-  console.log(articleChecked);
-  console.log(listArticlesAdded);
+  const [currentListId, updateCurrentListId] = useState("0000");
 
   useEffect(() => {
     let jsonChecked = localStorage.getItem("articleChecked");
@@ -35,11 +33,11 @@ function App() {
 
   return (
     <div>
-      {console.log("articles cochés: ", articleChecked)}
-      {console.log("articles ajoutés avec quantité: ", listArticlesAdded)}
       <Header
         listArticlesAdded={listArticlesAdded}
         updateListArticlesAdded={updateListArticlesAdded}
+        currentListId={currentListId}
+        updateCurrentListId={updateCurrentListId}
       />
       <section>
         <Section1AddedArticles
